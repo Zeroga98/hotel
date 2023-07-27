@@ -73,7 +73,6 @@ export default function NewPage({ code, pageName }) {
                     {code ? (
                         <>
                             <LivePreview />
-                            <LiveEditor onChange={(e) => setCodeRender(e)}/>
                             <LiveError />
                         </>
                     ) : (
