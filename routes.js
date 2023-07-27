@@ -10,9 +10,5 @@ export default [
   {
     path: '/contacter-nous',
     label: 'Contacter-nous'
-  },
-  {
-    path: '/new-page',
-    label: 'new-page'
   }
 ]

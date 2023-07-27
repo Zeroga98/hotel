@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react'
 
 
-export default function Header({ children, ...props }) {
+export function Header({ children, ...props }) {
   return (
     <Stack 
       h={props.h ? props.h : 200}

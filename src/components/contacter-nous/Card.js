@@ -21,7 +21,7 @@ import { BsPerson, BsFillBriefcaseFill } from 'react-icons/bs'
 import { MdOutlineEmail, MdPhone, MdLocationOn } from 'react-icons/md'
 
 // Custom Header component
-import Header from '../../components/Header'
+import { Header } from '../../components/Header'
 
 // Custom Button component
 import OutlineButton from '../../components/OutlineButton'

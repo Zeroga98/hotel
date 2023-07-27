@@ -15,7 +15,7 @@ import {
 import React from 'react'
 
 // Custom Header component
-import Header from '../../components/Header'
+import { Header } from '../../components/Header'
 
 
 export default function Testimonials() {

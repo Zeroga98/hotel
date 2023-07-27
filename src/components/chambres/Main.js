@@ -14,7 +14,7 @@ import Fade from 'react-reveal/Fade';
 import { Parallax } from 'react-parallax'
 
 // Custom Header component
-import Header from '../../components/Header'
+import { Header } from '../../components/Header'
 
 
 export default function Main() {

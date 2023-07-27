@@ -18,7 +18,7 @@ import { GiHorseHead } from 'react-icons/gi'
 import { DiCoda } from 'react-icons/di'
 
 // Custom Header component
-import Header from '../../components/Header'
+import { Header } from '../../components/Header'
 
 
 export default function Services() {
