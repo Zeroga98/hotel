@@ -21,10 +21,22 @@ import OutlineButton from '../../components/OutlineButton'
 
 import Link from 'next/link'
 import routes from '../../../routes'
+import { useState, useEffect } from "react";
 
 
-export default function Navbar() {
+export default function Navbar({ setCode }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [_routes, setRoutes] = useState(routes)
+
+  useEffect(() => {
+    window.addEventListener("message", (e) => {
+      setCode({ [e.data.key]: e.data.code })
+      setRoutes([..._routes, {
+        path: '/new-page/' + e.data.key,
+        label: e.data.name
+      }])
+    });
+  }, []);
 
   return (
     <>
@@ -97,7 +109,7 @@ export default function Navbar() {
           display={['none', 'none', 'flex', 'flex', 'flex']}
           spacing={0}
         >
-        {routes.map((route, index) => (
+        {_routes.map((route, index) => (
           <Link 
             key={index}
             href={route.path}
@@ -149,7 +161,7 @@ export default function Navbar() {
         align='center'
         opacity={0.9}
       >
-      {routes.map((route, index) => (
+      {_routes.map((route, index) => (
         <Link 
           key={index}
           href={route.path}

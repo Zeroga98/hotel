@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-export default function Layout({ children }) {
+export default function Layout({ children, setCode }) {
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ export default function Layout({ children }) {
         zIndex={1}
         position='relative'
       >
-        <Navbar />
+        <Navbar setCode={setCode}/>
         { children }
         <Spacer />
         <Footer />
