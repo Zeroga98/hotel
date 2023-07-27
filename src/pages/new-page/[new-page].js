@@ -6,8 +6,8 @@ import * as Chakra from "@chakra-ui/react";
 import * as Components from "../../components/index";
 
 export default function NewPage({ code, pageName }) {
-    
-    const scope = { React };
+
+    const [scope, setScope] = useState()
     const [codeRender, setCodeRender] = useState()
 
     useEffect(() => {
@@ -33,12 +33,13 @@ export default function NewPage({ code, pageName }) {
         }
 
         if (code) {
-            const importedComponents = getImportedComponents(code);
+            const importedComponents = getImportedComponents(code[pageName]);
             console.log(
                 "🚀 ~ file: new-page.js:39 ~ useEffect ~ importedComponents:",
                 importedComponents
             );
 
+            let scopes = { React }
             importedComponents.forEach((name) => {
                 console.log(
                     "🚀 ~ file: new-page.js:40 ~ importedComponents.forEach ~ name:",
@@ -46,20 +47,22 @@ export default function NewPage({ code, pageName }) {
                 );
 
                 if (name != "React"){
-                    if (Chakra[name]) scope[name] = Chakra[name];
-                    else scope[name] = Components[name];
+                    if (Chakra[name]) scopes[name] = Chakra[name];
+                    else scopes[name] = Components[name];
                 }
             });
             console.log(
                 "🚀 ~ file: new-page.js:42 ~ importedComponents.forEach ~ scope:",
-                scope
+                scopes
             );
+            setScope(scopes)
         }
     }, [code]);
 
     return (
         <Container mt={16} maxW="1200px" justify="center" align="center">
-            <LiveProvider
+            {codeRender && 
+                <LiveProvider
                 code={codeRender?.replace(
                     /import\s+[\w{},\s]+?\s+from\s+['"].+?['"];\s*/g,
                     ""
@@ -78,6 +81,8 @@ export default function NewPage({ code, pageName }) {
                     )}
                 </div>
             </LiveProvider>
+            }
+            
         </Container>
     );
 }
